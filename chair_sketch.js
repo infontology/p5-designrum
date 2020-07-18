@@ -1,13 +1,11 @@
 var rSlider, gSlider, bSlider;
 var fixed = {x: 400, y:300}; //En fast punkt
 var sitshoejd = 45;
-var rygghoejd = {min: 30, max: 70};
+var rygghoejd = {min: 0, max: 70};
 var sitsvidd = {min: 30, max: 70};
-var kropp = {min: 30, max: 200};
+var ryggvinkel = {min: 0, max: 1.57};
 var lem = {min: 30, max: 100};
 
-var hals = 0.2;
-var arm_ratio = 0.8;
 
 function setup() {
   // create canvas
@@ -20,11 +18,15 @@ function setup() {
   sitsviddSlider.position(20, 20);
   rygghoejdSlider = createSlider(rygghoejd.min, rygghoejd.max, 45);
   rygghoejdSlider.position(20, 50);
+  ryggvinkelSlider = createSlider(ryggvinkel.min, ryggvinkel.max, 0, 0.01);
+  ryggvinkelSlider.position(20, 80);
+
 }
 
 function draw() {
   var sitsvidd = sitsviddSlider.value();
   rygghoejd = rygghoejdSlider.value();
+  ryggvinkel = ryggvinkelSlider.value();
   //var lemmar = lSlider.value();
   //var kropp = kSlider.value();
   strokeWeight(7);
@@ -32,14 +34,15 @@ function draw() {
   //ellipse(400, fixed.y-huvud/2, huvud*.8, huvud); //Huvudet
   stroke(128);
 
-  line(fixed.x, fixed.y, fixed.x-sitsvidd, fixed.y);
-  line(fixed.x-sitsvidd, fixed.y, fixed.x-sitsvidd, fixed.y+sitshoejd);
-  line(fixed.x, fixed.y, fixed.x, fixed.y+sitshoejd);
-  line(fixed.x, fixed.y, fixed.x, fixed.y-rygghoejd);
+  line(fixed.x, fixed.y, fixed.x-sitsvidd, fixed.y); //sitsen
+  line(fixed.x-sitsvidd, fixed.y, fixed.x-sitsvidd, fixed.y+sitshoejd); //framben
+  line(fixed.x, fixed.y, fixed.x, fixed.y+sitshoejd); //bakben
+  line(fixed.x, fixed.y, fixed.x+(rygghoejd*Math.sin(ryggvinkel)), fixed.y-rygghoejd*Math.cos(ryggvinkel)); //rygg
 
   strokeWeight(1);
   text("sitsvidd " + sitsviddSlider.value(), sitsviddSlider.x * 2 + sitsviddSlider.width, 35);
   text("rygghoejd " + rygghoejdSlider.value(), rygghoejdSlider.x * 2 + rygghoejdSlider.width, 65);
+  text("ryggvinkel " + ryggvinkelSlider.value(), ryggvinkelSlider.x * 2 + ryggvinkelSlider.width, 95);
 
 
 }
