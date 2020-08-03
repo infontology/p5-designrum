@@ -22,8 +22,8 @@ function setup() {
   ryggvinkelSlider.position(20, 80);
   armstoedSlider = createSlider(armstoed.min, armstoed.max, 0);
   armstoedSlider.position(20, 110);
-  boejutskott_ryggSlider = createSlider(boejutskott_rygg.min, boejutskott_rygg.max, 0);
-  boejutskott_ryggSlider.position(20,140);
+  //boejutskott_ryggSlider = createSlider(boejutskott_rygg.min, boejutskott_rygg.max, 0);
+  //boejutskott_ryggSlider.position(20,140);
 
 }
 
@@ -33,7 +33,7 @@ function draw() {
   rygghoejd = rygghoejdSlider.value();
   ryggvinkel = ryggvinkelSlider.value();
   armstoed = armstoedSlider.value();
-  boejutskott_rygg = boejutskott_ryggSlider.value();
+  //boejutskott_rygg = boejutskott_ryggSlider.value();
   //var lemmar = lSlider.value();
   //var kropp = kSlider.value();
   strokeWeight(7);
@@ -49,14 +49,14 @@ function draw() {
   line(fixed.x, fixed.y, ryggstoedsslut.x, ryggstoedsslut.y); //ryggstöd
   line(fixed.x-sitsvidd, fixed.y, fixed.x-sitsvidd, fixed.y-armstoed); //armstoed1 i framben
   line(fixed.x+armstoed*Math.tan(ryggvinkel), fixed.y-armstoed, fixed.x-sitsvidd, fixed.y-armstoed); //armstoed2 vågrät
-  bezier(ryggstoedsslut.x, ryggstoedsslut.y, fixed.x+(1.2*rygghoejd*Math.sin(ryggvinkel)), fixed.y-1.2*rygghoejd*Math.cos(ryggvinkel), ryggstoedsslut.x, ryggstoedsslut.y, ryggstoedsslut.x+boejutskott_rygg, ryggstoedsslut.y-+boejutskott_rygg); //Böjutskottet på ryggen
+  //bezier(ryggstoedsslut.x, ryggstoedsslut.y, fixed.x+(1.2*rygghoejd*Math.sin(ryggvinkel)), fixed.y-1.2*rygghoejd*Math.cos(ryggvinkel), ryggstoedsslut.x, ryggstoedsslut.y, ryggstoedsslut.x+boejutskott_rygg, ryggstoedsslut.y-+boejutskott_rygg); //Böjutskottet på ryggen
 
   textSize(15);
   noStroke();
   text("sitsvidd " + sitsviddSlider.value(), sitsviddSlider.x * 2 + sitsviddSlider.width, 35);
-  text("rygghoejd " + rygghoejdSlider.value(), rygghoejdSlider.x * 2 + rygghoejdSlider.width, 65);
+  text("rygghöjd " + rygghoejdSlider.value(), rygghoejdSlider.x * 2 + rygghoejdSlider.width, 65);
   text("ryggvinkel " + ryggvinkelSlider.value()*180/Math.PI, ryggvinkelSlider.x * 2 + ryggvinkelSlider.width, 95);
   text("armstöd " + armstoedSlider.value(), armstoedSlider.x * 2 + armstoedSlider.width, 125);
-  text("böjutskott rygg " + boejutskott_ryggSlider.value(), boejutskott_ryggSlider.x * 2 + boejutskott_ryggSlider.width, 155);
+  //text("böjutskott rygg " + boejutskott_ryggSlider.value(), boejutskott_ryggSlider.x * 2 + boejutskott_ryggSlider.width, 155);
 
 }
